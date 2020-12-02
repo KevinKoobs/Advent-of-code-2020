@@ -1002,7 +1002,6 @@
 		'3-9 n: nnnlncrnnnnn'
 	];
 
-	console.log(input.length);
 	// Step 1;
 	let correctPasswords = 0;
 	input.forEach(value => {
@@ -1026,7 +1025,26 @@
 	})
 
 //	console.log(correctPasswords)
+	correctPasswords = 0;
 
+	input.forEach(value => {
+		const valueSections = value.split(" ")
+		const firstPosition = valueSections[0].split("-")[0] - 1
+		const secondPosition = valueSections[0].split("-")[1] - 1
+		const charNeeded = valueSections[1].substring(0, 1)
+		const password = valueSections[2]
+
+		let charCount = 0
+
+		Array.from(password).forEach((char, index) => {
+			if (index === firstPosition || index === secondPosition) {
+				if (char === charNeeded) { charCount += 1 } }
+		})
+
+		if (charCount === 1) { correctPasswords +=1 }
+
+	})
+	console.log(correctPasswords)
 
 
 </script>
